@@ -1,0 +1,26 @@
+.header-styling
+  %h1 Welcome to PAUABus
+  %p Please book your trip here:
+
+.form-group.col-md-6
+= simple_form_for(:city, html: { class: 'form-horizontal' }) do |form|
+  .col-sm-6
+    .form-group
+      %label{:for => "exampleFormControlSelect1"} Origin City
+      %select.form-control
+        %option Adelaide
+        %option Beijing
+        %option Cairo
+        %option Detroit
+      %label{:for => "exampleFormControlSelect1"} Destination City
+      %select.form-control
+        %option Adelaide
+        %option Beijing
+        %option Cairo
+        %option Detroit
+
+    %button.btn.btn-primary.mb-2{:type => "submit"} Book trip!
+    - binding.pry
+
+    - @cities.each do |city|
+      - puts city
