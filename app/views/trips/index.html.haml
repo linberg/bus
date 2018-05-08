@@ -2,11 +2,11 @@
   %h1 Welcome to PAUABus
   %p Please book your trip here:
 
-.form-group.col-md-6
-= simple_form_for(:trip, html: { class: 'form-horizontal' }) do |form|
-  .col-sm-6
-    .form-group
-      = form.input :city, label: "Origin City", collection: @cities.each(&:name), include_blank: false
-      = form.input :city, label: "Destination City", collection: @cities.each(&:name), include_blank: false
+  .form-group.col-md-6
+  = simple_form_for :trip, html: { class: 'form-horizontal' }, url: trips_calculate_path do |form|
+    .col-sm-6
+      .form-group
+        = form.input :origin_city, label: 'Origin City', collection: @cities.each(&:name), include_blank: false
+        = form.input :destination_city, label: 'Destination City', collection: @cities.each(&:name), include_blank: false
 
-    %button.btn.btn-primary.mb-2{:type => "submit"} Book trip!
+        = form.submit 'Check available trips', class: 'btn btn-outline-info'

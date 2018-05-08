@@ -1,2 +1,32 @@
-%h1 Trips#calculate
-%p Find me in app/views/trips/calculate.html.erb
+.header-styling
+  %h1 Your potential trips:
+  %h5 #{@origin.name} - #{@destination.name}
+
+  .radio
+    %label
+      %input.radio-margin{name: 'optradio', type: 'radio'}>/
+      Cheapest route: €#{@origin.cost + @destination.cost}
+  .radio
+    %label
+      %input.radio-margin{name: 'optradio', type: 'radio'}>/
+      Fastest route: #{@origin.time + @destination.time} hour(s)
+
+  %button.btn.btn-outline-info{'data-target' => '#modalWindow', 'data-toggle' => 'modal', type: 'button'} Book trip!
+
+#modalWindow.modal.fade{role: 'dialog'}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{'data-dismiss' => 'modal', type: 'button'} ×
+      .modal-body
+        %p Please enter some personal information before proceeding to payment.
+        %form
+          .form-group
+            %input.form-control{:placeholder => "Full Name", :type => "text"}/
+          .form-group
+            %input.form-control{:placeholder => "Email Address", :type => "text"}/
+          .form-group
+            %input.form-control{:placeholder => "Phone Number", :type => "text"}/
+
+      .modal-footer
+        %button.btn.btn-success{'data-dismiss' => 'modal', type: 'button'} Proceed to payment
